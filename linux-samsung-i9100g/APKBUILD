@@ -28,6 +28,15 @@ builddir="$srcdir/${_repository}-${_commit}"
 prepare() {
 	default_prepare
 
+	# do not use ramdisk.cpio and ramdisk-recovery-device.cpio, always use
+	# the initramfs from the recovery partition ("isorec"), so we can build
+	# it later and independently from the kernel. also directly boot that
+	# partition, not only when the recovery key combination was used.
+	cd "$builddir"/usr/
+	mv i9100g_initramfs.list i9100g_initramfs.list_old
+	grep -v "../../ramdisk" i9100g_initramfs.list_old > i9100g_initramfs.list
+	cp -v "$srcdir"/init "$builddir"/usr/i9100g_initramfs_files/init
+
 	# gcc6 support
 	cp -v "$srcdir/compiler-gcc6.h" "$builddir/include/linux/"
 
