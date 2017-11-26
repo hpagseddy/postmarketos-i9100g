@@ -27,6 +27,11 @@ builddir="$srcdir/${_repository}-${_commit}"
 
 prepare() {
 	default_prepare
+	
+	# Use Alpine's busybox.static instead of the pre-compiled busybox shipped
+	# with the source
+	cp -v /usr/$(arch_to_hostspec $arch)/bin/busybox.static \
+		"$builddir"/usr/i9100g_initramfs_files/busybox
 
 	# do not use ramdisk.cpio and ramdisk-recovery-device.cpio, always use
 	# the initramfs from the recovery partition ("isorec"), so we can build
