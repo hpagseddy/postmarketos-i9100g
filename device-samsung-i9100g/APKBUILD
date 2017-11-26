@@ -1,0 +1,18 @@
+pkgname="device-samsung-i9100g"
+pkgdesc="Samsung Galaxy S2G"
+pkgver=0.1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="noarch"
+options="!check"
+depends="linux-samsung-i9100g"
+source="deviceinfo"
+
+package() {
+	install -Dm644 "$srcdir"/deviceinfo \
+		"$pkgdir"/etc/deviceinfo
+}
+
+sha512sums="(run 'pmbootstrap checksum device-samsung-i9100g' to fill)"
+
