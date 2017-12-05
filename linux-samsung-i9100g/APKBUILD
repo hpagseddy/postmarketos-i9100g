@@ -42,7 +42,8 @@ prepare() {
 	mv i9100g_initramfs.list i9100g_initramfs.list_old
 	grep -v "../../ramdisk" i9100g_initramfs.list_old > i9100g_initramfs.list
 	cp -v "$srcdir"/init "$builddir"/usr/i9100g_initramfs_files/init
-
+	cd $builddir
+	
 	# gcc6 support
 	cp -v "$srcdir/compiler-gcc6.h" "$builddir/include/linux/"
 
