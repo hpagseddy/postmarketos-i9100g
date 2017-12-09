@@ -10,7 +10,7 @@ _flavor="samsung-i9100g"
 url="https://kernel.org"
 license="GPL2"
 options="!strip !check !tracedeps"
-makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev busybox-static-armhf findutils"
+makedepends="perl sed installkernel bash gmp-dev bc linux-headers elfutils-dev busybox-static-armhf findutils xz"
 HOSTCC="${CC:-gcc}"
 HOSTCC="${HOSTCC#${CROSS_COMPILE}}"
 
@@ -23,6 +23,8 @@ source="
 	$_config
 	compiler-gcc6.h
 	init
+	timeconst_fix.patch
+	03_fix_paranoid_network_disabled.patch
 "
 builddir="$srcdir/${_repository}-${_commit}"
 
@@ -93,5 +95,10 @@ package() {
 	fi
 }
 
-sha512sums="(run 'pmbootstrap checksum linux-samsung-i9100g' to fill)"
+sha512sums="9febfa97b20d2f46b57f6febbf63bedaa21c5529c8e7c1eda667d462ad98297c06f09231661074abf3a8886b656a4fd0349049a3061d2879360fcadf6e663374  linux-samsung-i9100g-638ed4dc2c7d93040587d88359cfd2a5b88edc07.tar.gz
+5db7d185998251475031b8ad5f6f936b7872e9864bdc41efca8ccc08daf30e1a0de0c67d3a69e23217771200b4b73b2c917b67ca16d25fe4d10b1d8e15d9e734  config-samsung-i9100g.armhf
+d80980e9474c82ba0ef1a6903b434d8bd1b092c40367ba543e72d2c119301c8b2d05265740e4104ca1ac5d15f6c4aa49e8776cb44264a9a28dc551e0d1850dcc  compiler-gcc6.h
+ac1aeca9805f53f724bcf22c253571f4c1d181cd7cd3e35fef040204bb7fcfe54970878e5a42716e00825ec43a975c79003b948438da0c02e327ca2cda74449f  init
+7191d532df8f6a8bf64b5b5bcaa7343c8d1b844c891a67fc6d29f421903ddd46c3e779a6f5a5833a6a8f635d1582f5224fa795b3912b8b211a90ee561ad31469  timeconst_fix.patch
+df62e03666313bb03d9a455eac875f170a55d378b6e56b847c1c6ff1ce5cfafcfdf1d7605754ca3c684840ea00357f9ec4c6621f6ff77377132a484b9258f6f7  03_fix_paranoid_network_disabled.patch"
 
