@@ -56,6 +56,9 @@ prepare() {
 	# Prepare kernel config ('yes ""' for kernels lacking olddefconfig)
 	cp "$srcdir"/$_config "$builddir"/.config
 	yes "" | make ARCH="$_carch" HOSTCC="$HOSTCC" oldconfig
+	
+	# Initramfs won't build without that symlink
+	ln -s . source
 }
 
 menuconfig() {
