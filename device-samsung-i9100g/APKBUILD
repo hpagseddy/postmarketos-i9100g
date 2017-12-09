@@ -14,5 +14,5 @@ package() {
 		"$pkgdir"/etc/deviceinfo
 }
 
-sha512sums="(run 'pmbootstrap checksum device-samsung-i9100g' to fill)"
+sha512sums="851d9ddd9075a0aabbf0fd78ca67e6e38f6035c0b7f63f4adca9f0d56fbddfa019702f68daa3b9201ed402a3f15fa027ce6dbd43a938bf6d43ccc9f411cb96c9  deviceinfo"
 
